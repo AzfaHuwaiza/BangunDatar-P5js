@@ -1,4 +1,4 @@
-// let ID
+// let Utama
 let mainMenu = true;
 let selectLang = false; 
 let playGameID = false;
@@ -6,6 +6,7 @@ let playGameEN = false;
 let backtoSelectLang = false;
 let buttonlangID, buttonlangEN;
 
+// let ID
 let lingkaranOn = false;
 let persegiOn = false;
 let segitigaOn = false;
@@ -40,14 +41,18 @@ let soundbackgroud;
 
 
 function preload() {
+    // Load Font
     fontViga = loadFont('assets/font/Viga.ttf');
     fontChicle = loadFont('assets/font/Chicle.ttf');
 
+    // Load IMG
     imgPemandangan = loadImage('assets/image/pemandangan.jpg');
 
+    // Load Music
+    soundFormats('mp3', 'wav');
     soundbackgroud = loadSound('assets/music/instrument.mp3')
 
-    // sound ID
+    // Load sound ID
     sound_l = loadSound('assets/sound/id/lingkaran.wav');
     sound_p = loadSound('assets/sound/id/persegi.wav');
     sound_s = loadSound('assets/sound/id/segitiga.wav');
@@ -55,7 +60,7 @@ function preload() {
     sound_t = loadSound('assets/sound/id/trapesium.wav');
     sound_jg = loadSound('assets/sound/id/jajar_genjang.wav');
 
-    // sound EN
+    // Load sound EN
     sound_cir = loadSound('assets/sound/en/circles.wav')
     sound_squ = loadSound('assets/sound/en/squares.wav')
     sound_tri = loadSound('assets/sound/en/triangles.wav')
@@ -66,7 +71,6 @@ function preload() {
 
 function setup() {
     soundbackgroud.loop();
-
     createCanvas(1280, 720);
     textFont(fontViga); 
     textFont(fontChicle); 
@@ -89,6 +93,7 @@ function setup() {
     parallelogram = new Parallelogram();
     buttonlangEN = new ButtonLangEN();
 
+    // Pilih Language
     kotakindo = new KotakID();
     kotaking = new KotakEN();
 
@@ -97,7 +102,6 @@ function setup() {
 
 function draw() {
     background(imgPemandangan);
-
     stroke(0);
     fill(255, 136, 77);
     textFont(fontChicle); 
@@ -106,7 +110,6 @@ function draw() {
     text("NAMA - NAMA BANGUN DATAR", width / 2, posisi_text - 100);
     
     if ( mainMenu == true) {
-
         stroke(0);
         fill(225);
         strokeWeight(2);
@@ -132,7 +135,6 @@ function draw() {
     
     // Play Game ID
     if ( playGameID == true) {
-
         background(imgPemandangan);
     
         stroke(0);
@@ -294,7 +296,6 @@ function draw() {
             quad(width / 2 - 80, height / 2 - 70, width / 2 + 160, height / 2 - 70, width / 2 + 80, height / 2 + 70, width / 2 - 160, height / 2 + 70);
         }
     } 
-
 }
 
 function mouseClicked(){
@@ -321,10 +322,7 @@ function mouseClicked(){
             } 
     }
 
-
     if ( playGameID == true ) {
-        
-
         let d = dist(mouseX, mouseY, lingkaran.x, lingkaran.y);
         if( d < 60){
             lingkaranOn = !lingkaranOn;
@@ -447,8 +445,6 @@ function mouseClicked(){
             sound_pp.stop();
         }
     }
-    
-    
     
     if ( playGameEN == true ) {
         let d = dist(mouseX, mouseY, circles.x, circles.y);
@@ -576,8 +572,6 @@ function mouseClicked(){
 }
 
 function mousePressed(){
-    
-
     if ( selectLang == true) {
         if (mouseX > 0 && mouseY > 0 && mouseX < 0 + width / 2 && mouseY < 0 + height) {
             selectLang = !selectLang;
@@ -590,5 +584,3 @@ function mousePressed(){
         }
     }
 }
-
-
