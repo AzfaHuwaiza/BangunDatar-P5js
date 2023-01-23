@@ -1,5 +1,6 @@
-let  mainMenu = false;
-let  playGame = false;
+let mainMenu = true;
+let selectLang = false; 
+let playGameID = false;
 
 let persegiOn = false;
 let lingkaranOn = false;
@@ -9,6 +10,7 @@ let trapesiumOn = false;
 let jargenOn = false;
 
 let lingkaran, persegi, segitiga, perpan, trapesium, jargen;
+let kotakindo, kotaking;
 let posisi_text = 220;
 
 let fontViga, fontChicle;
@@ -35,13 +37,12 @@ function preload() {
 }  
 
 function setup() {
+    soundbackgroud.loop();
+
     createCanvas(1280, 720);
     textFont(fontViga); 
     textFont(fontChicle); 
 
-    soundbackgroud.loop()
-
-    
     lingkaran = new Lingkaran();
     persegi = new Persegi();
     segitiga = new Segitiga();
@@ -49,11 +50,15 @@ function setup() {
     trapesium = new Trapesium();
     jargen = new Jajar_genjang();
     
+    kotakindo = new KotakID();
+    kotaking = new KotakEN();
+
+    
 }
 
 function draw() {
     background(imgPemandangan);
-    
+
     stroke(0);
     fill(255, 136, 77);
     textFont(fontChicle); 
@@ -61,7 +66,8 @@ function draw() {
     textAlign(CENTER);
     text("NAMA - NAMA BANGUN DATAR", width / 2, posisi_text - 100);
     
-    if ( mainMenu == false) {
+    if ( mainMenu == true) {
+
         stroke(0);
         fill(225);
         strokeWeight(2);
@@ -69,11 +75,33 @@ function draw() {
         textSize(50);
         textAlign(CENTER);
         text("Sentuh untuk Memulai", width / 2, height / 2)
-    } else {
-        playGame = true;
-    }
+    } 
+
+    if ( selectLang == true ) {
+        background(imgPemandangan);
+
+        stroke(0);
+        fill(255, 136, 77);
+        textFont(fontChicle); 
+        textSize(75);
+        textAlign(CENTER);
+        text("PILIH BAHASA", width / 2, posisi_text - 100);
+
+        kotakindo.show();
+        kotaking.show();
+    } 
     
-    if ( playGame == true) {
+    if ( playGameID == true) {
+
+        background(imgPemandangan);
+    
+        stroke(0);
+        fill(255, 136, 77);
+        textFont(fontChicle); 
+        textSize(75);
+        textAlign(CENTER);
+        text("NAMA - NAMA BANGUN DATAR", width / 2, posisi_text - 100);
+        
         stroke(0);
         strokeWeight(2);
         textFont(fontViga); 
@@ -88,8 +116,6 @@ function draw() {
         perpan.show();
         trapesium.show();
         jargen.show();
-
-        
 
         if( lingkaranOn == true ){
             stroke(0);
@@ -145,15 +171,17 @@ function draw() {
             quad(width / 2 - 80, height / 2 - 70, width / 2 + 160, height / 2 - 70, width / 2 + 80, height / 2 + 70, width / 2 - 160, height / 2 + 70);
         }
     } 
-    
-    
-
-  
-    
 }
 
 function mouseClicked(){
     if ( mainMenu == true) {
+        mainMenu = !mainMenu;
+        selectLang = true;
+        playGameID = false;
+    }
+
+
+    if ( playGameID == true ) {
         let d = dist(mouseX, mouseY, lingkaran.x, lingkaran.y);
         if( d < 60){
             lingkaranOn = !lingkaranOn;
@@ -275,16 +303,18 @@ function mouseClicked(){
             sound_t.stop();
             sound_pp.stop();
         }
-    } else {
-        if (mouseX, mouseY) {
-            mainMenu = !mainMenu;
-       }
     }
+}
 
-
+function mousePressed(){
     
 
-    
+    if ( selectLang == true) {
+        if (mouseX > 0 && mouseY > 0 && mouseX < 0 + width / 2 && mouseY < 0 + height) {
+            selectLang = !selectLang;
+            playGameID = true;
+        }
+    }
 }
 
 

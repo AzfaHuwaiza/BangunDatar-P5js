@@ -127,3 +127,42 @@ class Jajar_genjang{
     }
 }
 
+class KotakID {
+    constructor(x, y, s){
+        this.x = 420;
+        this.y = 520;
+        this.s = 120;
+        this.nama = "KotakID";
+        this.warna = color(255, 255, 26);
+    }
+
+    show() {
+        stroke(102, 102, 102);
+        strokeWeight(4);
+        fill(this.warna);
+        square(width / 2 - 200, height / 2 - 50, 80 * 2);
+        stroke(0);
+        textSize(30);
+        text("Indonesia", this.x + 100, this.y)
+    }
+}
+
+class KotakEN {
+    constructor(x, y, s){
+        this.x = 420;
+        this.y = 520;
+        this.s = 120;
+        this.nama = "KotakEN";
+        this.warna = color(102, 255, 51);
+    }
+
+    show() {
+        stroke(102, 102, 102);
+        strokeWeight(4);
+        fill(this.warna);
+        square(width / 2 + 100, height / 2 - 50, 80 * 2);
+        stroke(0);
+        textSize(30);
+        text("Comming Soon", width / 2 + 175, this.y)
+    }
+}
