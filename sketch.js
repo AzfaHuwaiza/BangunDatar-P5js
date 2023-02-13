@@ -3,8 +3,10 @@ let mainMenu = true;
 let selectLang = false; 
 let playGameID = false;
 let playGameEN = false;
+let playGameJP = false;
+let playGameTH = false;
 let backtoSelectLang = false;
-let buttonlangID, buttonlangEN;
+let buttonlangID, buttonlangEN, buttonlangJP; //buttonlangTH;
 
 // let ID
 let lingkaranOn = false;
@@ -32,9 +34,34 @@ let kotaking;
 let sound_cir, sound_squ, sound_tri,sound_rec, sound_trap, sound_par;
 
 
+// let JP
+let sākuruOn = false;
+let shikakkeiOn = false;
+let sankakkeiOn = false;
+let chōhōkeiOn = false;
+let daikeiOn = false;
+let heikōshihenkeiOn = false;
+
+let sākuru, shikakkei, sankakkei, chōhōkei, daikei, heikōshihenkei;
+let kotakjep;
+let sound_sākuru, sound_shikakkei, sound_sankakkei, sound_chōhōkei, sound_daikei, sound_heikōshihenkei;
+
+// let KR
+// let sākuruOn = false;
+// let shikakkeiOn = false;
+// let sankakkeiOn = false;
+// let chōhōkeiOn = false;
+// let daikeiOn = false;
+// let heikōshihenkeiOn = false;
+
+// let sākuru, shikakkei, sankakkei, chōhōkei, daikei, heikōshihenkei;
+let kotakkor;
+// let sound_sākuru, sound_shikakkei, sound_sankakkei, sound_chōhōkei, sound_daikei, sound_heikōshihenkei;
+
+
 // let Lain Lain
 let posisi_text = 220;
-let fontViga, fontChicle;
+let fontViga, fontChicle, fontJapanese;
 let imgPemandangan;
 let soundbackgroud;
 
@@ -44,6 +71,7 @@ function preload() {
     // Load Font
     fontViga = loadFont('assets/font/Viga.ttf');
     fontChicle = loadFont('assets/font/Chicle.ttf');
+    fontJapanese = loadFont('assets/font/Japanese.ttf');
 
     // Load IMG
     imgPemandangan = loadImage('assets/image/pemandangan.jpg');
@@ -67,6 +95,14 @@ function preload() {
     sound_rec = loadSound('assets/sound/en/rectangular.wav')
     sound_trap = loadSound('assets/sound/en/trapezoid.wav')
     sound_par = loadSound('assets/sound/en/parallelogram.wav')
+    
+    // Load sound EN
+    sound_sākuru = loadSound('assets/sound/jp/sākuru.wav')
+    sound_shikakkei = loadSound('assets/sound/jp/shikakkei.wav')
+    sound_sankakkei = loadSound('assets/sound/jp/sankakkei.wav')
+    sound_chōhōkei = loadSound('assets/sound/jp/chōhōkei.wav')
+    sound_daikei = loadSound('assets/sound/jp/daikei.wav')
+    sound_heikōshihenkei = loadSound('assets/sound/jp/heikōshihenkei.wav')
 }  
 
 function setup() {
@@ -74,6 +110,7 @@ function setup() {
     createCanvas(1280, 720);
     textFont(fontViga); 
     textFont(fontChicle); 
+    textFont(fontJapanese); 
 
     // ID
     lingkaran = new Lingkaran();
@@ -92,12 +129,22 @@ function setup() {
     trapezoid = new Trapezoid();
     parallelogram = new Parallelogram();
     buttonlangEN = new ButtonLangEN();
+    
+    // JP
+    sākuru = new Sākuru();
+    shikakkei = new Shikakkei();
+    sankakkei = new Sankakkei();
+    chōhōkei = new Chōhōkei();
+    daikei = new Daikei();
+    heikōshihenkei = new Heikōshihenkei();
+    buttonlangJP = new ButtonLangJP();
 
     // Pilih Language
     kotakindo = new KotakID();
     kotaking = new KotakEN();
+    kotakjep = new KotakJP();
+    kotakkor = new KotakKR();
 
-    
 }
 
 function draw() {
@@ -107,7 +154,7 @@ function draw() {
     textFont(fontChicle); 
     textSize(75);
     textAlign(CENTER);
-    text("NAMA - NAMA BANGUN DATAR", width / 2, posisi_text - 100);
+    text("SHAPE FOR KIDZ", width / 2, posisi_text - 100);
     
     if ( mainMenu == true) {
         stroke(0);
@@ -127,10 +174,12 @@ function draw() {
         textFont(fontChicle); 
         textSize(75);
         textAlign(CENTER);
-        text("PILIH BAHASA", width / 2, posisi_text - 100);
+        text("PILIH BAHASA", width / 2, posisi_text * 2 - 70);
 
         kotakindo.show();
         kotaking.show();
+        kotakjep.show();
+        kotakkor.show();
     } 
     
     // Play Game ID
@@ -224,7 +273,7 @@ function draw() {
         textFont(fontChicle); 
         textSize(75);
         textAlign(CENTER);
-        text("FLAT WAKE NAMES", width / 2, posisi_text - 100);
+        text("SHAPE FLAT WAKE NAMES", width / 2, posisi_text - 100);
         
         stroke(0);
         strokeWeight(2);
@@ -296,6 +345,99 @@ function draw() {
             quad(width / 2 - 80, height / 2 - 70, width / 2 + 160, height / 2 - 70, width / 2 + 80, height / 2 + 70, width / 2 - 160, height / 2 + 70);
         }
     } 
+    // Play Game JP
+    if ( playGameJP == true) {
+
+        background(imgPemandangan);
+        stroke(0);
+        fill(255, 136, 77);
+        textFont(fontJapanese); 
+        textSize(75);
+        textAlign(CENTER);
+        text("ウェイク名を形にする", width / 2, posisi_text - 100);
+        
+        stroke(0);
+        strokeWeight(2);
+        textFont(fontJapanese); 
+        fill(255, 255, 255);
+        textSize(27);
+        textAlign(CENTER);
+        text("*形を押す", width / 2, height - 25);
+
+        sākuru.show();
+        shikakkei.show();
+        sankakkei.show();
+        chōhōkei.show();
+        daikei.show();
+        heikōshihenkei.show();
+        buttonlangJP.show();
+
+        if( sākuruOn == true ){
+            stroke(0);
+            fill(sākuru.warna);
+            textSize(50);
+            textAlign(CENTER);
+            text(sākuru.nama, width / 2, posisi_text);
+            textSize(25);
+            text(sākuru.as, width / 2, posisi_text + 40);
+            ellipse(width / 2, height / 2, 80 * 2);
+        }
+        
+        if( shikakkeiOn == true ){
+            stroke(0);
+            fill(shikakkei.warna);
+            textSize(50);
+            textAlign(CENTER);
+            text(shikakkei.nama, width / 2, posisi_text);
+            textSize(25);
+            text(shikakkei.as, width / 2, posisi_text + 40);
+            square(width / 2 - 80, height / 2 - 80, 80 * 2);
+        }
+        
+        if( sankakkeiOn == true ){
+            stroke(0);
+            fill(sankakkei.warna);
+            textSize(50);
+            textAlign(CENTER);
+            text(sankakkei.nama, width / 2, posisi_text);
+            textSize(25);
+            text(sankakkei.as, width / 2, posisi_text + 40);
+            triangle(width / 2, height / 2 - 80, width /2 - 100, height / 2 + 80, width /2 + 100, height / 2 + 80);
+        }
+        
+        if( chōhōkeiOn == true ){
+            stroke(0);
+            fill(chōhōkei.warna);
+            textSize(50);
+            textAlign(CENTER);
+            text(chōhōkei.nama, width / 2, posisi_text);
+            textSize(25);
+            text(chōhōkei.as, width / 2, posisi_text + 40);
+            rect(width / 2 - 160, height / 2 - 80, 320, 160);
+        }
+        
+        if( daikeiOn == true ){
+            stroke(0);
+            fill(daikei.warna);
+            textSize(50);
+            textAlign(CENTER);
+            text(daikei.nama, width / 2, posisi_text);
+            textSize(25);
+            text(daikei.as, width / 2, posisi_text + 40);
+            quad(width / 2 - 80, height / 2 - 70, width / 2 + 80, height / 2 - 70, width / 2 + 160, height / 2 + 70, width / 2 - 160, height / 2 + 70);
+        }
+        
+        if( heikōshihenkeiOn == true ){
+            stroke(0);
+            fill(heikōshihenkei.warna);
+            textSize(50);
+            textAlign(CENTER);
+            text(heikōshihenkei.nama, width / 2, posisi_text);
+            textSize(25);
+            text(heikōshihenkei.as, width / 2, posisi_text + 40);
+            quad(width / 2 - 80, height / 2 - 70, width / 2 + 160, height / 2 - 70, width / 2 + 80, height / 2 + 70, width / 2 - 160, height / 2 + 70);
+        }
+    } 
 }
 
 function mouseClicked(){
@@ -304,6 +446,7 @@ function mouseClicked(){
         selectLang = true;
         playGameID = false;
         playGameEN = false;
+        playGameJP = false;
     }
 
     if (playGameID == true){ 
@@ -319,6 +462,14 @@ function mouseClicked(){
             if( langEN < 60){
                 selectLang = !selectLang;
                 playGameEN = false;
+            } 
+    }
+    
+    if (playGameJP == true) {
+        let langJP = dist(mouseX, mouseY, buttonlangJP.x, buttonlangJP.y);
+            if( langJP < 60){
+                selectLang = !selectLang;
+                playGameJP = false;
             } 
     }
 
@@ -569,18 +720,147 @@ function mouseClicked(){
             sound_rec.stop();
         }
     }
+
+    if ( playGameJP == true ) {
+        let d = dist(mouseX, mouseY, sākuru.x, sākuru.y);
+        if( d < 60){
+            sākuruOn = !sākuruOn;
+            shikakkeiOn = false;
+            sankakkeiOn = false;
+            chōhōkeiOn = false;
+            daikeiOn = false;
+            heikōshihenkeiOn = false;
+
+            if (sākuruOn == true){
+                sound_sākuru.play();
+            } else {
+                sound_sākuru.stop();
+            }
+            sound_shikakkei.stop();
+            sound_sankakkei.stop();
+            sound_chōhōkei.stop();
+            sound_daikei.stop();
+            sound_heikōshihenkei.stop();
+        }
+        
+        if( mouseX > shikakkei.x && mouseY > shikakkei.y && mouseX < shikakkei.x + shikakkei.s && mouseY < shikakkei.y + shikakkei.s){
+            shikakkeiOn = !shikakkeiOn;
+            sākuruOn = false;
+            sankakkeiOn = false;
+            chōhōkeiOn = false;
+            daikeiOn = false;
+            heikōshihenkeiOn = false;
+
+            if (shikakkeiOn == true) { 
+                sound_shikakkei.play();
+            } else {
+                sound_shikakkei.stop();
+            }
+            sound_sākuru.stop();
+            sound_sankakkei.stop();
+            sound_chōhōkei.stop();
+            sound_daikei.stop();
+            sound_heikōshihenkei.stop();
+        }
+        
+        let sgtg = dist(mouseX, mouseY, sankakkei.x1, sankakkei.y2 - 80);
+        if( sgtg < 60){
+            sankakkeiOn = !sankakkeiOn;
+            shikakkeiOn = false;
+            sākuruOn = false;
+            chōhōkeiOn = false;
+            daikeiOn = false;
+            heikōshihenkeiOn = false;
+
+            if (sankakkeiOn == true) { 
+                sound_sankakkei.play();
+            } else {
+                sound_sankakkei.stop();
+            }
+            sound_shikakkei.stop();
+            sound_sākuru.stop();
+            sound_chōhōkei.stop();
+            sound_daikei.stop();
+            sound_heikōshihenkei.stop();
+        }
+
+        if (mouseX > chōhōkei.x && mouseY > chōhōkei.y && mouseX < chōhōkei.x + chōhōkei.width && mouseY < chōhōkei.y + chōhōkei.height) {
+            chōhōkeiOn = !chōhōkeiOn;
+            shikakkeiOn = false;
+            sākuruOn = false;
+            sankakkeiOn = false;
+            daikeiOn = false;
+            heikōshihenkeiOn = false;
+
+            if (chōhōkeiOn == true) { 
+                sound_chōhōkei.play();
+            } else {
+                sound_chōhōkei.stop();
+            }
+            sound_shikakkei.stop();
+            sound_sākuru.stop();
+            sound_sankakkei.stop();
+            sound_daikei.stop();
+            sound_heikōshihenkei.stop();
+        }
+        
+        if (mouseX > daikei.x4 && mouseY > daikei.y4 - 100 && mouseX < daikei.x1 + 200 && mouseY < daikei.y1 + 100) {
+            daikeiOn = !daikeiOn;
+            shikakkeiOn = false;
+            sākuruOn = false;
+            sankakkeiOn = false;
+            chōhōkeiOn = false;
+            heikōshihenkeiOn = false;
+
+            if (daikeiOn == true) { 
+                sound_daikei.play();
+            } else {
+                sound_daikei.stop();
+            }
+            sound_shikakkei.stop();
+            sound_sākuru.stop();
+            sound_sankakkei.stop();
+            sound_chōhōkei.stop();
+            sound_heikōshihenkei.stop();
+        }
+
+        if (mouseX > heikōshihenkei.x4 && mouseY > heikōshihenkei.y2 && mouseX  < heikōshihenkei.x4 + 200 && mouseY < heikōshihenkei.y2 + 100) {
+            heikōshihenkeiOn = !heikōshihenkeiOn;
+            shikakkeiOn = false;
+            sākuruOn = false;
+            sankakkeiOn = false;
+            chōhōkeiOn = false;
+            daikeiOn = false;
+        
+            if (heikōshihenkeiOn == true) { 
+                sound_heikōshihenkei.play();
+            } else {
+                sound_heikōshihenkei.stop();
+            }
+            sound_shikakkei.stop();
+            sound_sākuru.stop();
+            sound_sankakkei.stop();
+            sound_chōhōkei.stop();
+            sound_daikei.stop();
+        }
+    }
 }
 
 function mousePressed(){
     if ( selectLang == true) {
-        if (mouseX > 0 && mouseY > 0 && mouseX < 0 + width / 2 && mouseY < 0 + height) {
+        if (mouseX > 0 && mouseY > 0 && mouseX < 0 + width / 2 && mouseY < 0 + height / 2) {
             selectLang = !selectLang;
             playGameID = true;
         }
 
-        if (mouseX > width / 2 && mouseY > 0 && mouseX < width && mouseY < 0 + height) {
+        if (mouseX > width / 2 && mouseY > 0 && mouseX < width && mouseY < 0 + height / 2) {
             selectLang = !selectLang;
             playGameEN = true;
+        }
+
+        if (mouseX > 0 && mouseY > 0 + height / 2 && mouseX < 0 + width / 2 && mouseY < 0 + height) {
+            selectLang = !selectLang;
+            playGameJP = true;
         }
     }
 }

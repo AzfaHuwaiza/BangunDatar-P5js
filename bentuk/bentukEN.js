@@ -120,6 +120,27 @@ class Parallelogram{
     }
 }
 
+// Kotak Bahasa EN
+class KotakEN {
+    constructor(x, y, s){
+        this.x = 420;
+        this.y = 520;
+        this.s = 120;
+        this.nama = "KotakEN";
+        this.warna = color(102, 204, 255);
+    }
+
+    show() {
+        stroke(102, 102, 102);
+        strokeWeight(4);
+        fill(this.warna);
+        square(width / 2 + 345, height / 2 / 3.5, 60 * 2);
+        stroke(0);
+        textSize(30);
+        text("ENGLISH", width / 2 + 405, this.y / 2 + 5)
+    }
+}
+
 class ButtonLangEN {
     constructor(x, y, r) {
         this.x = 1200;

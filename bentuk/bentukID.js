@@ -128,40 +128,21 @@ class KotakID {
         this.y = 520;
         this.s = 120;
         this.nama = "KotakID";
-        this.warna = color(255, 26, 26);
+        this.warna = color(255, 80, 80);
     }
 
     show() {
         stroke(102, 102, 102);
         strokeWeight(4);
         fill(this.warna);
-        square(width / 2 - 200, height / 2 - 50, 80 * 2);
+        square(width / 2 / 3.5, height / 2 / 3.5, 60 * 2);
         stroke(0);
         textSize(30);
-        text("INDONESIA", this.x + 100, this.y)
+        text("INDONESIA", this.x / 2 + 30, this.y / 2 + 5)
     }
 }
 
-// Kotak Bahasa EN
-class KotakEN {
-    constructor(x, y, s){
-        this.x = 420;
-        this.y = 520;
-        this.s = 120;
-        this.nama = "KotakEN";
-        this.warna = color(51, 51, 255);
-    }
 
-    show() {
-        stroke(102, 102, 102);
-        strokeWeight(4);
-        fill(this.warna);
-        square(width / 2 + 100, height / 2 - 50, 80 * 2);
-        stroke(0);
-        textSize(30);
-        text("ENGLISH", width / 2 + 175, this.y)
-    }
-}
 
 class ButtonLangID {
     constructor(x, y, r) {
