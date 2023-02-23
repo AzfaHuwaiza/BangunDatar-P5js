@@ -454,6 +454,12 @@ function mouseClicked(){
             if( langID < 60){
                 selectLang = !selectLang;
                 playGameID = false;
+                lingkaranOn = false;
+                persegiOn = false;
+                segitigaOn = false;
+                perpanOn = false;
+                trapesiumOn = false;
+                jargenOn = false;
             }
     }
 
@@ -462,6 +468,12 @@ function mouseClicked(){
             if( langEN < 60){
                 selectLang = !selectLang;
                 playGameEN = false;
+                circlesOn = false;
+                squaresOn = false;
+                trianglesOn = false;
+                rectangularOn = false;
+                trapezoidOn = false;
+                parallelogramOn = false;
             } 
     }
     
@@ -470,6 +482,12 @@ function mouseClicked(){
             if( langJP < 60){
                 selectLang = !selectLang;
                 playGameJP = false;
+                sākuruOn = false;
+                shikakkeiOn = false;
+                sankakkeiOn = false;
+                chōhōkeiOn = false;
+                daikeiOn = false;
+                heikōshihenkeiOn = false;
             } 
     }
 
@@ -848,17 +866,17 @@ function mouseClicked(){
 
 function mousePressed(){
     if ( selectLang == true) {
-        if (mouseX > 0 && mouseY > 0 && mouseX < 0 + width / 2 && mouseY < 0 + height / 2) {
+        if (mouseX > width / 2 / 3.5 && mouseY > height / 2 / 3.5 && mouseX < 0 + width / 2 / 3.5 + 120 && mouseY < 0 + height / 2 / 3.5 + 120) {
             selectLang = !selectLang;
             playGameID = true;
         }
 
-        if (mouseX > width / 2 && mouseY > 0 && mouseX < width && mouseY < 0 + height / 2) {
+        if (mouseX > width / 2 + 345 && mouseY > height / 2 / 3.5 && mouseX < width / 2 + 345 + 120 && mouseY < 0 + height / 2 / 3.5 + 120) {
             selectLang = !selectLang;
             playGameEN = true;
         }
 
-        if (mouseX > 0 && mouseY > 0 + height / 2 && mouseX < 0 + width / 2 && mouseY < 0 + height) {
+        if (mouseX > width / 2 / 3.5 && mouseY > height / 2 + 60 && mouseX < 0 + width / 2 / 3.5 + 120 && mouseY < 0 + height / 2 + 60 + 120) {
             selectLang = !selectLang;
             playGameJP = true;
         }
